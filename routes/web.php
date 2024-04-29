@@ -294,6 +294,7 @@ Route::group(['namespace' => 'App\Http\Controllers\admin', 'prefix' => 'admin'],
             );
 
 
+            Route::resource('colors', ColorController::class)->names('colors');
 
 
             Route::middleware('VendorMiddleware')->group(
@@ -372,7 +373,6 @@ Route::group(['namespace' => 'App\Http\Controllers\admin', 'prefix' => 'admin'],
                             Route::get('delete/{id}', [BranchController::class, 'delete']);
                         }
                     );
-                    Route::resource('colors', ColorController::class)->names('colors');
                     
                     // PRODUCTS
                     Route::group(

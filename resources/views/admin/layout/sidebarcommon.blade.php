@@ -101,6 +101,15 @@
     </li>
     
     @if (Auth::user()->type == 1)
+        <li class="nav-item mb-2 fs-7">
+            <a class="nav-link d-flex d-flex align-items-center {{ request()->is('admin/colors*') ? 'active' : '' }}" 
+                href="{{ URL::to('/admin/colors') }}" aria-expanded="false">
+                <span class="{{ request()->is('admin/colors*') ? 'sidebariconbox' : 'sidebariconbox1' }}">
+                    <i class="fas fa-check-circle"></i>
+                </span>
+                <span class="nav-text px-2">{{ trans('labels.colors') }}</span>
+            </a>
+        </li>
         @role('super admin')
             <li class="nav-item mb-2 fs-7 dropdown multimenu">
                 <a 

@@ -13,7 +13,25 @@ class ColorController extends Controller
 {
     public function index(Request $request)
     {
-        $allcategories = Category::where('vendor_id', Auth::user()->id)->where('is_deleted', 2)->orderby('reorder_id')->get();
-        return view('admin.category.category', compact("allcategories"));
+        $colors = Color::get();
+        return view('admin.color.index', compact("colors"));
+    }
+    public function create(Request $request)
+    {
+        return view('admin.color.create');
+    }
+    public function store(Request $request)
+    {
+        Color::create($request->all());
+        return redirect('admin/colors')->with('success', trans('messages.success'));
+    }
+    public function edit(Color $color)
+    {
+        return view('admin.color.edit', compact("color"));
+    }
+    public function update(Color $color, Request $request)
+    {
+        $color->update($request->all());
+        return redirect('admin/colors')->with('success', trans('messages.success'));
     }
 }
