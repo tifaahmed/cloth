@@ -25,12 +25,14 @@ use App\Http\Controllers\admin\WhatsappmessageController;
 use App\Http\Controllers\admin\RecaptchaController;
 use App\Http\Controllers\admin\BranchController;
 use App\Http\Controllers\admin\EmployeeController;
+use App\Http\Controllers\admin\ColorController;
 
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\web\HomeController;
 use App\Http\Controllers\web\FavoriteController;
 use App\Http\Controllers\web\UserAddressController;
+
 
 use App\Http\Controllers\web\UserController as WebUserController;
 use App\Http\Controllers\landing\HomeController as LandingHomeController;
@@ -370,6 +372,8 @@ Route::group(['namespace' => 'App\Http\Controllers\admin', 'prefix' => 'admin'],
                             Route::get('delete/{id}', [BranchController::class, 'delete']);
                         }
                     );
+                    Route::resource('colors', ColorController::class)->names('colors');
+                    
                     // PRODUCTS
                     Route::group(
                         ['prefix' => 'products'],

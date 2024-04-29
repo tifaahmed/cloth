@@ -6,7 +6,7 @@ use App\Helpers\helper;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryResource extends JsonResource
+class ColorResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

@@ -99,19 +99,28 @@ class Item extends Model
     }
 
     // belongTo
-    public function vendor(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'vendor_id', 'id')->select('id', 'name');
-    }
-    public function order(): BelongsTo
-    {
-        return $this->belongsTo(Order::class, 'reorder_id');
-    }
+        public function category()
+        {
+            return $this->belongsTo(Category::class,'cat_id');
+        }
+        public function vendor(): BelongsTo
+        {
+            return $this->belongsTo(User::class, 'vendor_id', 'id')->select('id', 'name');
+        }
+        public function order(): BelongsTo
+        {
+            return $this->belongsTo(Order::class, 'reorder_id');
+        }
 
     // belongsToMany
-    public function coupons()
-    {
-        return $this->belongsToMany(Coupons::class, CouponItem::class, 'item_id', 'coupon_id')
-            ->using(CouponItem::class);
-    }
+        public function coupons()
+        {
+            return $this->belongsToMany(Coupons::class, CouponItem::class, 'item_id', 'coupon_id')
+                ->using(CouponItem::class);
+        }
+        public function colors()
+        {
+            return $this->belongsToMany(Color::class, ItemColor::class, 'item_id', 'color_id')
+                ->using(ItemColor::class);
+        }
 }
